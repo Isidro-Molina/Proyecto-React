@@ -1,6 +1,6 @@
 .productosChango{
     border: 2px solid ;
-    width: 98%;
+    width: 50%;
     padding: 15px;
     margin: 0 auto;
     margin-top: 10px;
@@ -9,6 +9,10 @@
 .productosChango button{
     border: 1px solid;
     padding: 5px;
+}
+
+.productosChango img{
+    height: 200px;
 }
 
 .precioTotal, .productosTotal{
@@ -21,6 +25,7 @@
     flex-direction: column;
     padding: 10px;
     margin: 0 auto;
+    margin-bottom: 20px;
     border: 2px solid;
     width: 50%;
 }
@@ -41,7 +46,7 @@
 }
 
 .formulario button:hover{
-    background-color: green;
+    background-color: rgba(0, 128, 0, 0.636);
 }
 
 .update{
@@ -55,4 +60,8 @@
     margin-top: 10px;
     border: 1px solid;
     padding: 5px;
+}
+
+.cartContainer{
+    height: 100vh;
 }

@@ -14,9 +14,9 @@ export const NavBar = () => {
                 </div>
                 <div className="list">
                     <Link to='/'>Inicio</Link>
-                    <NavLink className={({ isActive }) => isActive === true ? 'claseActiva' : 'claseInactiva'} to='/category/juegos'>Juegos</NavLink>
-                    <NavLink className={({isActive})=>isActive === true ? 'claseActiva' : 'claseInactiva'} to='/category/consolas'>Consolas</NavLink>
-                    <NavLink className={({isActive})=>isActive === true ? 'claseActiva' : 'claseInactiva'} to='/category/accesorios'>Accesorios</NavLink>
+                    <NavLink className={({ isActive }) => isActive === true ? 'claseActiva' : 'claseInactiva'} to='/category/Argentina'>Liga Argentina</NavLink>
+                    <NavLink className={({isActive})=>isActive === true ? 'claseActiva' : 'claseInactiva'} to='/category/Europa'>Europa</NavLink>
+                    <NavLink className={({isActive})=>isActive === true ? 'claseActiva' : 'claseInactiva'} to='/category/Internacional'>Internacional</NavLink>
                 </div> 
                 <div>
                     <Link to='/cart'>

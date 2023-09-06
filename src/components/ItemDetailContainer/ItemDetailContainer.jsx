@@ -1,17 +1,14 @@
-import './ItemDetailContainer.css'
-import { useState, useEffect } from "react";
-import { arregloProductos } from "../baseDatos/baseDatos";
-import { ItemDetail } from "../ItemDetail/ItemDetail";
+import './ItemDetailContainer.css';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { db } from '../../utils/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-
+import { ItemCount } from '../ItemCount/ItemCount';
+import { CartContext } from '../../context/CartContext.js';
 
 export const ItemDetailContainer = () => {
     const { id } = useParams();
-    const [itemProduct, setItemProduct] = useState({})
-
-    
+    const [itemProduct, setItemProduct] = useState({});
 
     useEffect(() => {
         const getProducto = async () => {
@@ -21,18 +18,28 @@ export const ItemDetailContainer = () => {
             const response = await getDoc(queryRef);
             const newDoc = {
                 ...response.data(),
-                id: response.id
-            }
+                id: response.id,
+            };
             setItemProduct(newDoc);
-        }
-        getProducto()
+        };
+        getProducto();
     }, [id]);
 
+    const { addProduct } = useContext(CartContext);
+
+    const agregarProducto = (quantity) => {
+        addProduct(itemProduct, quantity);
+    };
 
     return (
-        <div className='aaa'>
-            <p>Detalles del producto</p>
-            <ItemDetail item={itemProduct} />
+        <div className="container">
+            <img src={itemProduct.image} alt={itemProduct.title} />
+
+            <h3>{itemProduct.title}</h3>
+            <h4>$ {itemProduct.price}</h4>
+            <p>Stock disponible: {itemProduct.stock}</p>
+
+            <ItemCount stock={itemProduct.stock} initial={1} onAdd={agregarProducto} />
         </div>
-    )
-}
+    );
+};
